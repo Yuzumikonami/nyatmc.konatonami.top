@@ -23,11 +23,11 @@ const cfg = useAppConfig().nyatmc
 
         <p class="mt-5 max-w-2xl text-lg text-muted md:text-xl">
           用 Go 编写的 <span class="font-semibold text-default">Minecraft 服务器全能管理工具</span>，
-          开服、管服、备份、穿透全部收进一个可执行文件喵～
+          开服、管服、备份全部收进一个可执行文件喵～
         </p>
 
         <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <UBadge v-for="t in ['单二进制', '零依赖', 'TUI 一等公民', 'CLI 脚本接口', 'Web 远程补充', '跨平台']" :key="t" color="primary" variant="subtle" size="lg">{{ t }}</UBadge>
+          <UBadge v-for="t in ['单二进制', '零依赖', 'CLI 脚本接口','Tui支持', '跨平台']" :key="t" color="primary" variant="subtle" size="lg">{{ t }}</UBadge>
         </div>
 
         <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
