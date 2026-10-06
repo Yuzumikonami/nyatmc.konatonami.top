@@ -15,8 +15,6 @@ const features: Feature[] = [
   { icon: 'i-lucide-archive', title: '备份恢复', desc: 'tar.gz 打包、自动轮转、带确认的一键恢复', status: 'plan' },
   { icon: 'i-lucide-clock', title: '定时调度', desc: 'cron 表达式定时备份、定时重启', status: 'plan' },
   { icon: 'i-lucide-download', title: '服务端下载', desc: 'Paper / Fabric / Spigot 自动拉取 + SHA256 校验', status: 'plan' },
-  { icon: 'i-lucide-globe', title: '内网穿透', desc: '一键 Cloudflare Tunnel，状态栏直显公网地址', status: 'plan' },
-  { icon: 'i-lucide-layout-dashboard', title: 'Web 面板', desc: '浏览器实时日志 + 远程控制，SSE 推送', status: 'plan' },
   { icon: 'i-lucide-refresh-cw', title: '自动更新', desc: '基于 GitHub Release 自更新，保持最新版本', status: 'plan' },
 ]
 
@@ -33,9 +31,6 @@ const platformNotes = [
       <div class="mx-auto max-w-2xl text-center">
         <p class="font-mono text-sm font-semibold text-primary-500">// 特性</p>
         <h2 class="mt-2 text-3xl font-bold tracking-tight md:text-4xl">一个二进制，管好整个服务器</h2>
-        <p class="mt-3 text-muted">
-          TUI 是一等公民，CLI 为脚本接口，Web 为远程补充 —— 三层 UI 共享同一套业务核心。
-        </p>
       </div>
 
       <!-- 特性网格 -->
@@ -55,35 +50,6 @@ const platformNotes = [
           </div>
           <h3 class="mt-4 text-base font-semibold">{{ f.title }}</h3>
           <p class="mt-1.5 text-sm leading-relaxed text-muted">{{ f.desc }}</p>
-        </div>
-      </div>
-
-      <!-- 架构设计 -->
-      <div class="mt-14 grid items-center gap-8 lg:grid-cols-2">
-        <div>
-          <p class="font-mono text-sm font-semibold text-primary-500">// 设计哲学</p>
-          <h3 class="mt-2 text-2xl font-bold">TUI 本质是壳，<code class="rounded bg-elevated px-1.5 py-0.5 font-mono text-lg text-primary-500">internal/app</code> 才是真相源</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted">
-            分层依赖严格单向：CLI（Cobra）、TUI（Bubble Tea）、Web（Gin）三个壳互不导入，
-            全部业务逻辑沉淀在 <span class="font-mono">internal/app</span>，操作的是磁盘上同一份实例数据（<span class="font-mono">~/.nyatmc/</span>）。
-          </p>
-          <ul class="mt-4 space-y-2 text-sm text-muted">
-            <li class="flex items-center gap-2"><UIcon name="i-lucide-check" class="size-4 text-primary-500" /> UI 层禁止写业务逻辑，只调用 app 并把结果可视化</li>
-            <li class="flex items-center gap-2"><UIcon name="i-lucide-check" class="size-4 text-primary-500" /> Unix 用 Setpgid 杀进程组，Windows 用 Job Object</li>
-            <li class="flex items-center gap-2"><UIcon name="i-lucide-check" class="size-4 text-primary-500" /> 全平台纯子进程运行，Termux 也能开服</li>
-          </ul>
-        </div>
-        <div class="rounded-card border border-default bg-elevated/40 p-5">
-          <!-- eslint-disable-next-line vue/no-v-html -->
-          <pre class="overflow-x-auto font-mono text-xs leading-relaxed text-muted md:text-sm"><code>main.go
-  ↓
-cmd/ (Cobra)   tui/ (Bubble Tea)   web/ (Gin)
-  ↓                ↓                  ↓
-        <span class="text-primary-500 font-semibold">internal/app/</span>  ← 唯一业务入口
-                ↓
-daemon / config / backup / scheduler / downloader
-                ↓
-          pkg/ (logger · procutil)</code></pre>
         </div>
       </div>
 

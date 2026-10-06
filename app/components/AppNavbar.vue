@@ -5,7 +5,6 @@ const colorMode = useColorMode()
 const links = [
   { label: '特性', to: '#features' },
   { label: '安装', to: '#install' },
-  { label: '路线图', to: '#roadmap' },
 ]
 
 function toggleColorMode(e: Event) {
@@ -17,7 +16,7 @@ function toggleColorMode(e: Event) {
 <template>
   <header class="sticky top-0 z-50 border-b border-default bg-default/80 backdrop-blur">
     <UContainer class="flex h-16 items-center justify-between gap-3">
-      <a href="#top" class="flex items-center gap-2 text-lg font-bold">
+      <a href="https://github.com/Yuzumikonami/nyatmc" class="flex items-center gap-2 text-lg font-bold">
         <span class="text-2xl" aria-hidden="true">🐾</span>
         <span class="font-mono">NyaTMC</span>
         <UBadge color="warning" variant="subtle" size="sm">开发中</UBadge>
